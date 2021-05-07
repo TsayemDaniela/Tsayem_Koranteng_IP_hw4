@@ -21,6 +21,7 @@ IMAGE_CHANNELS=3
 
 #preparing training data
 filenames = os.listdir("training_set/training_set")
+# print(filenames)
 categories = []
 for filename in filenames:
     category = filename.split('.')[0]
@@ -116,7 +117,7 @@ train_generator = train_datagen.flow_from_dataframe(
 validation_datagen = ImageDataGenerator(rescale=1./255)
 validation_generator = validation_datagen.flow_from_dataframe(
     validate_df, 
-    "training_set/training_set", 
+    "./training_set/training_set", 
     x_col='filename',
     y_col='category',
     target_size=IMAGE_SIZE,
@@ -127,22 +128,22 @@ validation_generator = validation_datagen.flow_from_dataframe(
 example_df = train_df.sample(n=1).reset_index(drop=True)
 example_generator = train_datagen.flow_from_dataframe(
     example_df, 
-    "training_set/training_set", 
+    "./training_set/training_set", 
     x_col='filename',
     y_col='category',
     target_size=IMAGE_SIZE,
     class_mode='categorical'
 )
 
-# plt.figure(figsize=(12, 12))
-# for i in range(0, 15):
-#     plt.subplot(5, 3, i+1)
-#     for X_batch, Y_batch in example_generator:
-#         image = X_batch[0]
-#         plt.imshow(image)
-#         break
-# plt.tight_layout()
-# plt.show()
+plt.figure(figsize=(12, 12))
+for i in range(0, 15):
+    plt.subplot(5, 3, i+1)
+    for X_batch, Y_batch in example_generator:
+        image = X_batch[0]
+        plt.imshow(image)
+        break
+plt.tight_layout()
+plt.show()
 
 #fit model
 epochs=3 if FAST_RUN else 50

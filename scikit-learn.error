@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "c:\Users\Daniela Tsayem\.vscode\extensions\ms-python.python-2021.4.765268190\pythonFiles\shell_exec.py", line 26, in <module>
+    subprocess.check_call(shell_args, stdout=sys.stdout, stderr=sys.stderr)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\subprocess.py", line 363, in check_call
+    raise CalledProcessError(retcode, cmd)
+subprocess.CalledProcessError: Command '['C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/python.exe', 'c:\\Users\\Daniela Tsayem\\.vscode\\extensions\\ms-python.python-2021.4.765268190\\pythonFiles\\pyvsc-run-isolated.py', 'pip', 'install', '-U', 'numpy', 'pandas', 'keras', 'tensorflow', 'matplotlib']' returned non-zero exit status 2.
